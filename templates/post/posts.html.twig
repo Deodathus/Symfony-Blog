@@ -1,0 +1,11 @@
+<div class="row post-row">
+    <div class="col-md-4">
+        {{ post.shortDescription }}
+    </div>
+    <div class="col-md-5">
+        {{ post.content }}
+    </div>
+    <div class="col-md-3 text-right">
+        {{ post.createdAt | date("d M, Y") }}
+    </div>
+</div>

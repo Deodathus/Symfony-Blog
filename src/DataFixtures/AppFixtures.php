@@ -2,16 +2,19 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\CategoryFactory;
+use App\Factory\PostFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+        $categories = CategoryFactory::new()->createMany(8);
 
-        $manager->flush();
+        foreach ($categories as $category) {
+            PostFactory::new()->createMany(6, ['category' => $category]);
+        }
     }
 }

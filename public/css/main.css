@@ -1,0 +1,29 @@
+#base-container {
+    margin-top: 10px;
+}
+
+#base-row {
+    background: #686d76;
+    padding: 10px;
+    color: #eeeeee;
+    margin-bottom: 15px;
+}
+
+#base-title {
+    font-size: 22px;
+    color: white;
+}
+
+#base-title:hover {
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.post-row {
+    border: 1px solid #eeeeee;
+    margin-bottom: 10px;
+}
