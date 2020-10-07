@@ -18,28 +18,28 @@ class Post
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private string $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $shortDescription;
+    private string $shortDescription;
 
     /**
      * @ORM\Column(type="text", length=1000)
      */
-    private $content;
+    private string $content;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $category;
+    private Category $category;
 
     public function __construct(string $title, string $shortDescription, string $content, Category $category)
     {

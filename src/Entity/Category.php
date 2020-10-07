@@ -18,23 +18,23 @@ class Category
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category", orphanRemoval=true)
      */
-    private $posts;
+    private Collection $posts;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"name"})
      */
-    private $slug;
+    private string $slug;
 
     public function __construct(string $name)
     {
@@ -81,7 +81,6 @@ class Category
     {
         if ($this->posts->contains($post)) {
             $this->posts->removeElement($post);
-            // set the owning side to null (unless already changed)
             if ($post->getCategory() === $this) {
                 $post->setCategory(null);
             }

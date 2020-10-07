@@ -2,16 +2,23 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
+use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends AbstractController
 {
-    public function index(Category $category): Response
+    private CategoryServiceInterface $categoryService;
+
+    public function __construct(CategoryServiceInterface $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
+    public function index(int $id): Response
     {
         return $this->render('category/index.html.twig', [
-            'category' => $category,
+            'category' => $this->categoryService->fetchCategoryById($id),
         ]);
     }
 }

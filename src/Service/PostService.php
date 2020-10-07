@@ -3,12 +3,13 @@
 namespace App\Service;
 
 use App\Repository\PostRepository;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
-class PostService
+class PostService implements PostServiceInterface
 {
-    private $postRepository;
-    private $paginator;
+    private PostRepository $postRepository;
+    private PaginatorInterface $paginator;
 
     public function __construct(PostRepository $postRepository, PaginatorInterface $paginator)
     {
@@ -16,7 +17,7 @@ class PostService
         $this->paginator = $paginator;
     }
 
-    public function fetchAll(int $page): \Knp\Component\Pager\Pagination\PaginationInterface
+    public function fetchAll(int $page): PaginationInterface
     {
         return $this->paginator->paginate($this->postRepository->getFetchAllQuery(), $page);
     }

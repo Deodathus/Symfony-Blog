@@ -3,5 +3,5 @@ homepage:
     controller: App\Controller\HomeController::index
 
 category:
-    path: /category/{slug}
+    path: /category/{id}
     controller: App\Controller\CategoryController::index

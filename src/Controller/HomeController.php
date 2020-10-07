@@ -3,16 +3,16 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
-use App\Service\PostService;
+use App\Service\PostServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
-    private $postService;
+    private PostServiceInterface $postService;
 
-    public function __construct(PostService $postService)
+    public function __construct(PostServiceInterface $postService)
     {
         $this->postService = $postService;
     }
