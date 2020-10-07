@@ -1,0 +1,23 @@
+index:
+  path: /
+  controller: App\Controller\AdminController::index
+
+create_category:
+  path: /category/create
+  controller: App\Controller\AdminCategoryController::create
+
+store_category:
+  path: /category/store
+  controller: App\Controller\AdminCategoryController::store
+
+show_category:
+  path: /category/{id}
+  controller: App\Controller\AdminCategoryController::show
+
+update_category:
+  path: /category/{id}/update
+  controller: App\Controller\AdminCategoryController::update
+
+delete_category:
+  path: /category/{id}/delete
+  controller: App\Controller\AdminCategoryController::delete

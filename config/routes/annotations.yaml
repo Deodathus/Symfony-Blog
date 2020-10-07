@@ -5,3 +5,8 @@ controllers:
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
+
+admin:
+    resource: ../admin_routes.yaml
+    prefix: /admin
+    name_prefix: admin_

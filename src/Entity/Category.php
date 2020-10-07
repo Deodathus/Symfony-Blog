@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\DTO\CategoryDto;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -36,9 +37,10 @@ class Category
      */
     private string $slug;
 
-    public function __construct(string $name)
+    public function __construct(string $name, string $slug)
     {
         $this->name = $name;
+        $this->slug = $slug;
         $this->posts = new ArrayCollection();
     }
 
@@ -97,6 +99,19 @@ class Category
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public static function createFromDto(CategoryDto $categoryDto): self
+    {
+        return new self($categoryDto->getName(), $categoryDto->getSlug());
+    }
+
+    public function update(CategoryDto $categoryDto): self
+    {
+        $this->setName($categoryDto->getName());
+        $this->setSlug($categoryDto->getSlug());
 
         return $this;
     }

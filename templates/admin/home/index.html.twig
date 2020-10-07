@@ -1,0 +1,36 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Welcome to the DDECS BLOG!{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h3>Categories ({{ categories | length }})</h3>
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    Options:
+                </div>
+                <div class="col-md-12 text-left">
+                    <ul>
+                        <li><a href="{{ path(admin_prefix ~ "create_category") }}">Create</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 text-left">
+                    <ul>
+                        {% for category in categories %}
+                        <li>
+                            <a href="{{ path(admin_prefix ~ 'show_category', {id: category.id}) }}">{{ category.name }} : Update</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Posts</h3>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Tags</h3>
+        </div>
+    </div>
+{% endblock %}

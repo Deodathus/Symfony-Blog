@@ -1,0 +1,27 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Category creating...{% endblock %}
+
+{% block body %}
+    <form action="{{ path(admin_prefix ~ 'store_category') }}" method="post">
+        <div class="row">
+            <div class="col-md-1">
+                <label for="category-name">Category name:</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="category-name" name="category-name" placeholder="Enter name">
+            </div>
+            <div class="col-md-1">
+                <label for="category-slug">Category slug:</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="category-slug" name="category-slug" placeholder="Enter slug">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 col-md-offset-11">
+                <button type="submit" class="btn">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
