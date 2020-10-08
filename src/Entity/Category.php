@@ -37,10 +37,14 @@ class Category
      */
     private string $slug;
 
-    public function __construct(string $name, string $slug)
+    public function __construct(string $name, string $slug = null)
     {
         $this->name = $name;
-        $this->slug = $slug;
+
+        if (isset($slug)) {
+            $this->slug = $slug;
+        }
+
         $this->posts = new ArrayCollection();
     }
 

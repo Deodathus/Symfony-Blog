@@ -4,13 +4,13 @@ namespace App\Service;
 
 use App\DTO\CategoryDto;
 use App\Entity\Category;
-use App\Repository\CategoryRepository;
+use App\Repository\CategoryRepositoryInterface;
 
 class CategoryService implements CategoryServiceInterface
 {
-    private CategoryRepository $categoryRepository;
+    private CategoryRepositoryInterface $categoryRepository;
 
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }
@@ -22,7 +22,7 @@ class CategoryService implements CategoryServiceInterface
 
     public function fetchCategoryById(int $id): Category
     {
-        return $this->categoryRepository->find($id);
+        return $this->categoryRepository->fetchById($id);
     }
 
     public function fetchAll(): array
