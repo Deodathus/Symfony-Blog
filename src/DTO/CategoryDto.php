@@ -22,9 +22,4 @@ class CategoryDto
     {
         return $this->slug;
     }
-
-    public static function createFromArray(array $data): self
-    {
-        return new self($data['name'], $data['slug']);
-    }
 }

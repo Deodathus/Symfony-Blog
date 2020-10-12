@@ -107,15 +107,10 @@ class Category
         return $this;
     }
 
-    public static function createFromDto(CategoryDto $categoryDto): self
+    public function update(string $name, string $slug): self
     {
-        return new self($categoryDto->getName(), $categoryDto->getSlug());
-    }
-
-    public function update(CategoryDto $categoryDto): self
-    {
-        $this->setName($categoryDto->getName());
-        $this->setSlug($categoryDto->getSlug());
+        $this->setName($name);
+        $this->setSlug($slug);
 
         return $this;
     }

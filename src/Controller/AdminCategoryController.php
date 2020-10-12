@@ -27,12 +27,12 @@ class AdminCategoryController extends AbstractController
 
     public function store(Request $request): RedirectResponse
     {
-        $categoryData = [
-            'name' => $request->get('category-name'),
-            'slug' => $request->get('category-slug'),
-        ];
+        $categoryDto = new CategoryDto(
+            $request->get('category-name'),
+            $request->get('category-slug')
+        );
 
-        $this->categoryService->store(CategoryDto::createFromArray($categoryData));
+        $this->categoryService->store($categoryDto);
 
         return $this->redirectToRoute($this->routePrefix . 'index');
     }
@@ -48,12 +48,12 @@ class AdminCategoryController extends AbstractController
 
     public function update(int $id, Request $request): RedirectResponse
     {
-        $categoryData = [
-            'name' => $request->get('category-name'),
-            'slug' => $request->get('category-slug'),
-        ];
+        $categoryDto = new CategoryDto(
+            $request->get('category-name'),
+            $request->get('category-slug')
+        );
 
-        $this->categoryService->update($id, CategoryDto::createFromArray($categoryData));
+        $this->categoryService->update($id, $categoryDto);
 
         return $this->redirectToRoute($this->routePrefix . 'index');
     }

@@ -32,14 +32,20 @@ class CategoryService implements CategoryServiceInterface
 
     public function store(CategoryDto $categoryDto): void
     {
-        $categoryToStore = Category::createFromDto($categoryDto);
+        $categoryToStore = new Category(
+            $categoryDto->getName(),
+            $categoryDto->getSlug(),
+        );
 
         $this->categoryRepository->store($categoryToStore);
     }
 
     public function update(int $id, CategoryDto $categoryDto): void
     {
-        $this->categoryRepository->fetchById($id)->update($categoryDto);
+        $this->categoryRepository->fetchById($id)->update(
+            $categoryDto->getName(),
+            $categoryDto->getSlug()
+        );
 
         $this->categoryRepository->update();
     }
