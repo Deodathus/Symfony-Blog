@@ -1,9 +1,9 @@
 <div class="row post-row">
     <div class="col-md-4">
-        {{ post.shortDescription }}
+        <a href="{{ path('post', {id: post.id}) }}">{{ post.title }}</a>
     </div>
     <div class="col-md-5">
-        {{ post.content }}
+        {{ post.shortDescription }}
     </div>
     <div class="col-md-3 text-right">
         {{ post.createdAt | date("d M, Y") }}

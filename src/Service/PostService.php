@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Post;
 use App\Repository\PostRepositoryInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -15,6 +16,11 @@ class PostService implements PostServiceInterface
     {
         $this->postRepository = $postRepository;
         $this->paginator = $paginator;
+    }
+
+    public function fetchById(int $id): Post
+    {
+        return $this->postRepository->fetchById($id);
     }
 
     public function fetchAll(int $page): PaginationInterface

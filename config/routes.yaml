@@ -5,3 +5,7 @@ homepage:
 category:
     path: /category/{id}
     controller: App\Controller\CategoryController::index
+
+post:
+    path: /post/{id}
+    controller: App\Controller\PostController::show

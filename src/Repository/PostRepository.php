@@ -20,6 +20,11 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         parent::__construct($registry, Post::class);
     }
 
+    public function fetchById(int $id): Post
+    {
+        return $this->find($id);
+    }
+
     public function fetchAllByCreatedAt(): array
     {
         return $this->createQueryBuilder('p')
