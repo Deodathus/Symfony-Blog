@@ -41,7 +41,7 @@ class AdminCategoryController extends AbstractController
     {
         $category = $this->categoryService->fetchCategoryById($id);
 
-        return $this->render('admin/category/update.html.twig', [
+        return $this->render('admin/category/show.html.twig', [
             'category' => $category,
         ]);
     }

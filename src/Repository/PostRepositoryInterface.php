@@ -12,4 +12,10 @@ interface PostRepositoryInterface
     public function fetchAllByCreatedAt(): array;
 
     public function getFetchAllQuery(): Query;
+
+    public function store(Post $post): void;
+
+    public function update(): void;
+
+    public function remove(Post $post): void;
 }

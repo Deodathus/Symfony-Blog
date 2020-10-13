@@ -21,3 +21,23 @@ update_category:
 delete_category:
   path: /category/{id}/delete
   controller: App\Controller\AdminCategoryController::delete
+
+create_post:
+  path: /post/create
+  controller: App\Controller\AdminPostController::create
+
+store_post:
+  path: /post/store
+  controller: App\Controller\AdminPostController::store
+
+show_post:
+  path: /post/{id}
+  controller: App\Controller\AdminPostController::show
+
+update_post:
+  path: /post/{id}/update
+  controller: App\Controller\AdminPostController::update
+
+delete_post:
+  path: /post/{id}/delete
+  controller: App\Controller\AdminPostController::delete
