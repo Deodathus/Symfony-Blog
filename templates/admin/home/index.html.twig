@@ -28,6 +28,23 @@
         </div>
         <div class="col-md-4 text-center">
             <h3>Posts</h3>
+            <div class="col-md-12 text-left">
+                Options:
+            </div>
+            <div class="col-md-12 text-left">
+                <ul>
+                    <li><a href="{{ path(admin_prefix ~ "create_post") }}">Create</a></li>
+                </ul>
+            </div>
+            <div class="col-md-12 text-left">
+                <ul>
+                    {% for post in posts %}
+                        <li>
+                            <a href="{{ path(admin_prefix ~ 'show_post', {id: post.id}) }}">{{ post.title }} : Update</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         <div class="col-md-4 text-center">
             <h3>Tags</h3>

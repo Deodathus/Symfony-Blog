@@ -101,4 +101,14 @@ class Post
 
         return $this;
     }
+
+    public function update(string $title, string $shortDescription, string $content, Category $category): self
+    {
+        $this->setTitle($title);
+        $this->setShortDescription($shortDescription);
+        $this->setContent($content);
+        $this->setCategory($category);
+
+        return $this;
+    }
 }

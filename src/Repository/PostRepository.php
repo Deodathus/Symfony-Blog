@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -15,9 +16,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PostRepository extends ServiceEntityRepository implements PostRepositoryInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Post::class);
+        $this->entityManager = $entityManager;
     }
 
     public function fetchById(int $id): Post
@@ -38,5 +42,22 @@ class PostRepository extends ServiceEntityRepository implements PostRepositoryIn
         return $this->createQueryBuilder('p')
             ->orderBy('p.createdAt', 'DESC')
             ->getQuery();
+    }
+
+    public function store(Post $post): void
+    {
+        $this->entityManager->persist($post);
+        $this->entityManager->flush();
+    }
+
+    public function update(): void
+    {
+        $this->entityManager->flush();
+    }
+
+    public function remove(Post $post): void
+    {
+        $this->entityManager->remove($post);
+        $this->entityManager->flush();
     }
 }
